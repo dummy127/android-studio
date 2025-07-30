@@ -1,0 +1,198 @@
+mainactiviy.java
+package com.example.calculator;
+
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+public class MainActivity extends AppCompatActivity {
+
+    EditText n1,n2,result;
+
+    Button add,subtract,multipy,divide;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        n1 = (EditText) findViewById(R.id.m1);
+        n2 = (EditText) findViewById(R.id.m2);
+        result = (EditText) findViewById(R.id.result);
+
+        add = (Button) findViewById(R.id.add);
+        subtract = (Button) findViewById(R.id.subtract);
+        multipy = (Button) findViewById(R.id.multiply);
+        divide = (Button) findViewById(R.id.divide);
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int no1,no2,res;
+                no1 = Integer.parseInt(n1.getText().toString());
+                no2 = Integer.parseInt(n2.getText().toString());
+                res = no1+no2;
+                //result.setText(res);
+                result.setText(String.valueOf(res));
+            }
+        });
+
+
+
+        subtract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int no1,no2,res;
+                no1 = Integer.parseInt(n1.getText().toString());
+                no2 = Integer.parseInt(n2.getText().toString());
+                res = no1-no2;
+               // result.setText(res);
+                result.setText(String.valueOf(res));
+            }
+        });
+
+
+
+        multipy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int no1,no2,res;
+                no1 = Integer.parseInt(n1.getText().toString());
+                no2 = Integer.parseInt(n2.getText().toString());
+                res = no1*no2;
+                result.setText(String.valueOf(res));
+                //result.setText(res);
+            }
+        });
+
+
+
+        divide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                float no1, no2, res;
+                no1 = Float.parseFloat(n1.getText().toString());
+                no2 = Float.parseFloat(n2.getText().toString());
+
+                if (no2 == 0) {
+                    result.setText("Cannot divide by zero");
+                } else {
+                    res = no1 / no2;
+                    result.setText(String.valueOf(res));
+                }
+            }
+        });
+
+
+
+    }
+}
+
+activity_main.xml
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Number"
+        android:textSize="25dp"
+        android:id="@+id/t1"
+
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/m1"
+        android:textSize="20dp"
+        android:layout_below="@+id/t1"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Second Number"
+        android:layout_below="@+id/m1"
+        android:id="@+id/t2"
+        android:textSize="25dp"
+
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/m2"
+        android:textSize="20dp"
+        android:layout_below="@+id/t2"
+        />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/m2"
+        android:id="@+id/linear1">
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/m2"
+        android:text="Addition"
+        android:textSize="10dp"
+        android:id="@+id/add"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/add"
+        android:text="Subtraction"
+        android:textSize="10dp"
+        android:id="@+id/subtract"/>
+
+    <Button
+        android:id="@+id/multiply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/subtract"
+        android:textSize="10dp"
+        android:text="Multiplication" />
+
+    <Button
+        android:id="@+id/divide"
+        android:layout_width="wrap_content"
+        android:textSize="10dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/multiply"
+        android:text="Division" />
+    </LinearLayout>
+
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Result"
+    android:textSize="25dp"
+
+android:layout_below="@+id/linear1"
+android:id="@+id/t3"
+
+    />
+
+<EditText
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/result"
+    android:textSize="20dp"
+android:layout_below="@+id/t3"
+    />
+
+
+
+    </RelativeLayout>
