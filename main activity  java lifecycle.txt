@@ -1,0 +1,40 @@
+package com.example.lifecycle;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        notify("In onCreate() lifecycle method ");
+
+    }
+    protected void onPause(){
+        super.onPause();
+        notify("In onPause() lifecycle network");
+    }
+
+    protected void onResume(){
+        super.onResume();
+        notify(" In onResume() lifecycle network");
+    }
+
+    protected void onStop(){
+        super.onStop();
+        notify("in onStop() lifecycle network");
+    }
+    protected void onDestroy(){
+        super.onDestroy();
+        notify("In onDestroy() lifecycle network");
+    }
+    private void notify(String methodName){
+        String name = this.getClass().getName();
+        String[] strings = name.split("\\.");
+        Toast.makeText(getApplicationContext(),methodName+" "+strings[strings.length-1],Toast.LENGTH_LONG).show();
+    }
+}
